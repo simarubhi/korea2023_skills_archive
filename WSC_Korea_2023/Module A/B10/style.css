@@ -18,7 +18,7 @@ body {
 	height: 150px;
 }
 
-.select {
+/* .select {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -31,15 +31,28 @@ body {
 
 .select .sa {
 	/* background-color: red; */
-	/* border: 1px solid black; */
-	width: calc(750px / 10);
+/* border: 1px solid black; */
+/* width: calc(750px / 10);
 	height: 150px;
 	z-index: 1000;
 	opacity: 0.2;
+} */
+
+/* .sa:hover + .sc svg {
+	display: none;
+} */
+
+.star-cut:nth-child(odd) {
+	/* clip-path: polygon(100% 10%, 84% 43%, 19% 41%, 70% 60%, 55% 85%, 100% 70%); */
+	/* background-color: green; */
+	/* overflow: hidden; */
 }
 
-.sa:hover + .sc svg {
-	display: none;
+.star-cut:nth-child(even) {
+	/* clip-path: polygon(100% 10%, 84% 43%, 19% 41%, 70% 60%, 55% 85%, 100% 70%); */
+	transform: rotateY(180deg);
+	/* background-color: indigo; */
+	/* overflow: hidden; */
 }
 
 .sc {
@@ -53,19 +66,64 @@ body {
 	height: 150px;
 }
 
+.star-cut:nth-child(even) svg {
+	transform: rotateY(180deg);
+}
+
 .sc svg {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	width: calc(750px / 5);
+	width: calc(750px / 10);
 	height: 150px;
+	position: relative;
+	/* overflow: hidden; */
 }
 
 .sc svg polygon {
+	/* width: 0; */
+	/* clip-path: polygon(50 0, 40 30, 0 31, 30 50, 17 90, 50 70); */
+	transition: all 300ms ease;
+	/* clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%); */
+}
+
+.sc .star-cut:nth-child(odd) svg polygon {
+	/* visibility: hidden; */
+	transform: translate(-50px, 35px);
+}
+
+.sc .star-cut:nth-child(even) svg polygon {
+	/* visibility: hidden; */
+	transform: translate(-100px, 35px);
+}
+
+/* .sc svg:nth-child(odd) polygon {
 	transform: translate(25px, 35px);
 }
 
-.sc svg:nth-child(2) polygon {
-	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);
-	/* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); */
+.sc svg:nth-child(even) polygon {
+	transform: translate(-50px, 35px);
+} */
+
+.sc:hover .star-cut:nth-child(odd) svg polygon {
+	transform: translate(25px, 35px);
 }
+
+.sc:hover .star-cut:nth-child(even) svg polygon {
+	transform: translate(-50px, 35px);
+}
+
+.sc svg:hover polygon {
+	/* display: none; */
+	/* clip-path: polygon(0 0); */
+	/* clip-path: none; */
+	/* clip-path: polygon(50 0, 40 30, 0 31, 30 50, 17 90, 50 70); */
+	/* display: none; */
+
+	/* clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%); */
+}
+
+/* .sc svg:nth-child(2) polygon { */
+/* clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%); */
+/* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); */
+/* } */
