@@ -3,3 +3,69 @@
 	margin: 0;
 	padding: 0;
 }
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.cn {
+	position: relative;
+	width: 750px;
+	height: 150px;
+}
+
+.select {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 750px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.select .sa {
+	/* background-color: red; */
+	/* border: 1px solid black; */
+	width: calc(750px / 10);
+	height: 150px;
+	z-index: 1000;
+	opacity: 0.2;
+}
+
+.sa:hover + .sc svg {
+	display: none;
+}
+
+.sc {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 750px;
+	height: 150px;
+}
+
+.sc svg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(750px / 5);
+	height: 150px;
+}
+
+.sc svg polygon {
+	transform: translate(25px, 35px);
+}
+
+.sc svg:nth-child(2) polygon {
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);
+	/* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); */
+}
