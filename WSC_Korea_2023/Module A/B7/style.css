@@ -1,0 +1,203 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.cn {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	/* border: 1px solid black; */
+}
+
+.two {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	background-color: transparent;
+}
+
+.two div {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.tl {
+	position: absolute;
+	top: 35%;
+	left: 27%;
+	height: 40px;
+	width: 60px;
+	transform: rotate(-55deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.tl div {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+}
+
+.tr {
+	position: absolute;
+	top: 35%;
+	right: 27%;
+	height: 40px;
+	width: 60px;
+	transform: rotate(55deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.tr .two {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	height: 100%;
+}
+
+.tr .two div {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.tr div:nth-child(2) {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.bl {
+	position: absolute;
+	bottom: 35%;
+	left: 27%;
+	height: 40px;
+	width: 60px;
+	transform: rotate(55deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.bl .two {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	height: 100%;
+}
+
+.bl .two div {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.bl div:nth-child(2) {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.br {
+	position: absolute;
+	bottom: 35%;
+	right: 27%;
+	height: 40px;
+	width: 60px;
+	transform: rotate(-55deg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.br .two {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	height: 100%;
+}
+
+.br .two div {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+/* .bl div:nth-child(2) {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+} */
+
+.circle {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%) rotate(35deg);
+}
+
+.circle .rb {
+	width: 100px;
+	height: 50px;
+	background-color: rgb(210, 17, 17);
+	border-radius: 10rem 10rem 0 0;
+}
+
+.circle .bb {
+	width: 100px;
+	height: 50px;
+	background-color: rgb(11, 11, 134);
+	border-radius: 0 0 10rem 10rem;
+}
+
+.circle .rs {
+	position: absolute;
+	top: 23px;
+	right: 50px;
+	width: 50px;
+	height: 50px;
+	background-color: rgb(210, 17, 17);
+	/* background-color: green; */
+	border-radius: 10rem;
+}
+
+.circle .bs {
+	position: absolute;
+	top: 23px;
+	left: 50px;
+	width: 50px;
+	height: 50px;
+	background-color: rgb(11, 11, 134);
+	/* background-color: green; */
+	border-radius: 10rem;
+}

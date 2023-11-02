@@ -1,0 +1,52 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.colours {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-right: auto;
+	width: 500px;
+}
+
+.colours .sq {
+	width: 30px;
+	height: 30px;
+}
+
+.colours .sq.black {
+	background-color: black;
+}
+
+.colours .sq.red {
+	background-color: red;
+}
+
+.colours .sq.yellow {
+	background-color: yellow;
+}
+
+.colours .sq.green {
+	background-color: green;
+}
+
+.colours .sq.blue {
+	background-color: blue;
+}
+
+#myC {
+	border: 1px solid black;
+}
