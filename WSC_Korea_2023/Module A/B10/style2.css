@@ -1,0 +1,106 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.ctn {
+	width: 750px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+}
+
+img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 50;
+}
+
+.hc {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 750px;
+	height: 150px;
+}
+
+.hf {
+	width: calc(750px / 10);
+	height: 150px;
+	z-index: 100;
+}
+
+.outline {
+	width: 750px;
+	height: 150px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 0;
+
+	clip-path: url(#clipP);
+}
+
+.cover {
+	width: 750px;
+	height: 150px;
+	background-color: #e5ba41;
+	transform: translateX(-100%);
+	transition: all 400ms ease;
+}
+
+.hf:nth-child(1):hover ~ .outline .cover {
+	transform: translateX(-90%);
+}
+
+.hf:nth-child(2):hover ~ .outline .cover {
+	transform: translateX(-80%);
+}
+
+.hf:nth-child(3):hover ~ .outline .cover {
+	transform: translateX(-70%);
+}
+
+.hf:nth-child(4):hover ~ .outline .cover {
+	transform: translateX(-60%);
+}
+
+.hf:nth-child(5):hover ~ .outline .cover {
+	transform: translateX(-50%);
+}
+
+.hf:nth-child(6):hover ~ .outline .cover {
+	transform: translateX(-40%);
+}
+
+.hf:nth-child(7):hover ~ .outline .cover {
+	transform: translateX(-30%);
+}
+
+.hf:nth-child(8):hover ~ .outline .cover {
+	transform: translateX(-20%);
+}
+
+.hf:nth-child(9):hover ~ .outline .cover {
+	transform: translateX(-10%);
+}
+
+.hf:nth-child(10):hover ~ .outline .cover {
+	transform: translateX(0%);
+}

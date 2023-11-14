@@ -8,23 +8,23 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	width: 100vw;
+	margin: 0 10%;
 	height: 100vh;
 }
 
 .colours {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	gap: 10px;
-	margin-right: auto;
-	width: 500px;
 }
 
 .colours .sq {
 	width: 30px;
 	height: 30px;
+	cursor: pointer;
 }
 
 .colours .sq.black {
@@ -47,6 +47,22 @@ body {
 	background-color: blue;
 }
 
+.con {
+	position: relative;
+	margin: 10px 0;
+}
+
 #myC {
 	border: 1px solid black;
+	position: relative;
+}
+
+.bl {
+	position: absolute;
+	bottom: -2px;
+	right: -6px;
+	width: 6px;
+	height: 6px;
+	border: 1px solid black;
+	cursor: se-resize;
 }

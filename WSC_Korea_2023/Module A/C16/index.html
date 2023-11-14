@@ -8,16 +8,19 @@
 	</head>
 	<body>
 		<div class="colours">
-			<div class="sq black"></div>
-			<div class="sq red"></div>
-			<div class="sq yellow"></div>
-			<div class="sq green"></div>
-			<div class="sq blue"></div>
+			<div class="sq black" data-col="black"></div>
+			<div class="sq red" data-col="red"></div>
+			<div class="sq yellow" data-col="yellow"></div>
+			<div class="sq green" data-col="green"></div>
+			<div class="sq blue" data-col="blue"></div>
 		</div>
-		<canvas id="myC" width="500" height="500"></canvas>
+		<div class="con">
+			<canvas id="myC" width="300" height="300"> </canvas>
+			<div class="bl"></div>
+		</div>
 		<div class="btn-c">
-			<button inputmode="none">Save to jpg</button>
-			<button inputmode="none">Save to png</button>
+			<button id="jpg-btn" inputmode="none">Save to jpg</button>
+			<button id="png-btn" inputmode="none">Save to png</button>
 		</div>
 	</body>
 	<script src="index.js"></script>
