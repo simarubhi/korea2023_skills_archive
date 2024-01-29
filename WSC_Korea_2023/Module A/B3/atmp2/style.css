@@ -1,0 +1,30 @@
+:root {
+	counter-reset: images;
+}
+
+.photo-item:nth-child(9) {
+	position: relative;
+}
+
+.photo-item:nth-child(n + 10) {
+	counter-increment: images;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 132px;
+	height: 136px;
+}
+
+.photo-item:nth-child(n + 10)::before {
+	content: '+ ' counter(images);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 132px;
+	height: 136px;
+	background-color: rgba(0, 0, 0, 0.455);
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
