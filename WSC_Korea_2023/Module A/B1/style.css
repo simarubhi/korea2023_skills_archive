@@ -1,6 +1,5 @@
 :root {
 	counter-reset: boxes;
-	--testval: 10;
 }
 
 * {
