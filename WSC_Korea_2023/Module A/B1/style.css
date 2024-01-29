@@ -1,0 +1,108 @@
+:root {
+	counter-reset: boxes;
+	--testval: 10;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+}
+
+.container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 20px;
+	margin: 20px;
+}
+
+.con {
+	position: relative;
+}
+
+.box {
+	width: 80px;
+	height: 80px;
+	border: 1px solid black;
+	position: relative;
+}
+
+.one::before {
+	content: '10';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.two::before {
+	content: '32';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.three::before {
+	content: '64';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.four::before {
+	content: '-15';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80px;
+	height: 80px;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+}
+
+.bone:checked {
+	counter-increment: boxes 10;
+}
+
+.btwo:checked {
+	counter-increment: boxes 32;
+}
+
+.bthree:checked {
+	counter-increment: boxes 64;
+}
+
+.bfour:checked {
+	counter-increment: boxes -15;
+}
+
+input:checked ~ .box {
+	border: 3px solid black;
+	background-color: rgb(226, 255, 59);
+}
+
+.sum {
+	margin-left: 20px;
+}
+
+.sum::after {
+	content: ' ' counter(boxes);
+}
