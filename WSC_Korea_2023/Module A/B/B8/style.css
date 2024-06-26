@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.star-container {
+	position: relative;
+	animation: 3s linear infinite rostar;
+}
+
+.half-star {
+	background-color: yellow;
+	width: 300px;
+	height: 300px;
+	clip-path: polygon(50% 0%, 65% 35%, 100% 35%, 75% 60%, 85% 100%, 50% 80%);
+}
+
+.half-star:nth-child(2) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: rotateY(180deg);
+}
+
+@keyframes rostar {
+	from {
+		transform: rotate(0);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}

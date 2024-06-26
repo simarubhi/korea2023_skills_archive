@@ -1,0 +1,53 @@
+.red {
+	animation: trafficr 8s step-end 5s infinite;
+}
+
+.orange {
+	animation: traffico 8s step-end 4s infinite;
+}
+
+.green {
+	animation: trafficg 8s step-end infinite;
+}
+
+@keyframes trafficr {
+	0% {
+		opacity: 1;
+	}
+
+	37.5% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 0.2;
+	}
+}
+
+@keyframes traffico {
+	0% {
+		opacity: 1;
+	}
+
+	12.5% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 0.2;
+	}
+}
+
+@keyframes trafficg {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 0.2;
+	}
+}

@@ -1,0 +1,203 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: monospace;
+}
+
+body {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	/* background-color: rgb(22, 22, 22); */
+	overflow: hidden;
+}
+
+.moon,
+.sun {
+	position: absolute;
+	top: 0;
+	right: 50%;
+	transform: translate(50%, 0);
+	z-index: 5;
+	opacity: 0.9;
+	transform-origin: 50% 80vh;
+	transition: all 1s ease;
+}
+
+.sun {
+	transform: translate(50%, 0) rotate(180deg);
+}
+
+.cloud1,
+.cloud2 {
+	position: absolute;
+	height: auto;
+	z-index: 110;
+}
+
+.cloud1 {
+	top: 5%;
+	right: 5%;
+	width: 70px;
+	opacity: 0.8;
+	animation: c1 55s infinite linear;
+}
+
+.cloud2 {
+	top: 20%;
+	right: 15%;
+	width: 150px;
+	opacity: 0.6;
+	animation: c2 35s infinite linear;
+}
+
+.btn {
+	position: absolute;
+	bottom: 20px;
+	width: 100px;
+	height: 50px;
+	z-index: 150;
+}
+
+.day {
+	left: 20px;
+}
+
+.night {
+	right: 20px;
+}
+
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.15rem;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	transition: all 200ms ease;
+}
+
+.btn.day::after {
+	content: 'Day';
+	color: rgb(24, 4, 97);
+	background-color: rgb(228, 228, 188);
+}
+
+.btn.night::after {
+	content: 'Night';
+	color: rgb(228, 228, 188);
+	background-color: rgb(24, 4, 97);
+}
+
+.day:hover::after {
+	color: rgb(228, 228, 188);
+	background-color: rgb(24, 4, 97);
+}
+
+.night:hover::after {
+	color: rgb(24, 4, 97);
+	background-color: rgb(228, 228, 188);
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+	background-color: rgb(7, 5, 29);
+	transition: all 1.5s ease;
+}
+
+.mt {
+	position: absolute;
+	right: 0;
+	bottom: -20%;
+	width: 100vw;
+	height: auto;
+	z-index: 10;
+	/* background: rgb(7, 5, 29); */
+}
+
+.overlay {
+	position: absolute;
+	right: 0;
+	bottom: -20%;
+	width: 100vw;
+	/* height: auto; */
+	z-index: 11;
+	background: linear-gradient(rgb(13, 13, 202), rgb(0, 0, 0));
+	/* background: linear-gradient(rgb(7, 5, 29)); */
+	opacity: 0.6;
+	mix-blend-mode: darken;
+	aspect-ratio: 640 / 239;
+	transition: all 1.5s ease;
+}
+
+/* .overlay::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 70%;
+	background: linear-gradient(transparent, cyan);
+	mix-blend-mode: hard-light;
+} */
+
+.day:checked ~ .sun {
+	transform: translate(50%, 0) rotate(360deg);
+	transition-delay: 1s;
+}
+
+.day:checked ~ .moon {
+	transform: translate(50%, 0) rotate(180deg);
+}
+
+.day:checked ~ .bg {
+	background-color: rgb(248, 225, 149);
+}
+
+.day:checked ~ .overlay {
+	background: linear-gradient(
+		180deg,
+		rgb(248, 225, 149) 0%,
+		rgba(0, 0, 0, 1) 70%
+	);
+	/* mix-blend-mode: lighten; */
+	opacity: 0.8;
+}
+
+.night:checked ~ .sun {
+	transform: translate(50%, 0) rotate(180deg);
+}
+
+.night:checked ~ .moon {
+	transform: translate(50%, 0) rotate(0deg);
+	transition-delay: 1s;
+}
+
+@keyframes c1 {
+	from {
+		transform: translateX(12vw);
+	}
+	to {
+		transform: translateX(-100vw);
+	}
+}
+
+@keyframes c2 {
+	from {
+		transform: translateX(25vw);
+	}
+	to {
+		transform: translateX(-100vw);
+	}
+}

@@ -1,0 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	perspective: 2500px;
+}
+
+img {
+	background-repeat: no-repeat;
+}
+
+.dice {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	transform-style: preserve-3d;
+	transform-origin: 60% 30%;
+	animation: 10s infinite linear roll;
+}
+
+.front,
+.top,
+.left,
+.right,
+.bottom,
+.back {
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	outline: 1px solid black;
+}
+
+.front {
+	transform: translate3d(0, 0, 400px);
+}
+
+.front img {
+	position: absolute;
+	top: 100%;
+	right: 50%;
+	transform: translate(50%, -50%);
+}
+
+.top {
+	transform-origin: bottom;
+	transform: translate3d(0, -100%, 400px) rotateX(90deg);
+}
+
+.top img {
+	position: absolute;
+	top: 0;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.left {
+	transform-origin: right;
+	transform: translate3d(-100%, 0, 0) rotateY(90deg);
+}
+
+.left img {
+	position: absolute;
+	top: 100%;
+	left: 0%;
+	transform: translate(0%, -50%);
+}
+
+.right {
+	transform-origin: left;
+	transform: translate3d(100%, 0, 400px) rotateY(90deg);
+}
+
+.right img {
+	position: absolute;
+	top: 100%;
+	right: 0%;
+	transform: translate(0%, -50%);
+}
+
+.bottom {
+	transform-origin: top;
+	transform: translate(0, 100%) rotateX(90deg);
+}
+
+.bottom img {
+	position: absolute;
+	top: 100%;
+	right: 50%;
+	transform: translate(50%, -75%);
+}
+
+.back {
+	transform: translate3d(0, 0, 0);
+}
+
+.back img {
+	position: absolute;
+	top: 100%;
+	right: 50%;
+	transform: translate(49.92%, -100%);
+}
+
+@keyframes roll {
+	0% {
+		transform: rotate3d(0, 0, 0, 0deg);
+	}
+
+	100% {
+		transform: rotate3d(1, 1, 1, 360deg);
+	}
+}

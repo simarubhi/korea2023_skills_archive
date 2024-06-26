@@ -1,0 +1,151 @@
+:root {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+	background-color: rgb(0, 0, 0);
+	color: white;
+}
+
+h1 {
+	margin-top: 3rem;
+}
+
+.card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+	width: 80vw;
+}
+
+.card {
+	width: 100%;
+	max-width: 300px;
+	position: relative;
+}
+
+.front,
+.back {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	padding: 3rem;
+	backface-visibility: hidden;
+	transition: all 500ms ease;
+}
+
+.front .heading {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.front .heading img {
+	width: 50px;
+	height: 50px;
+}
+
+.front .heading h2 {
+	font-weight: 300;
+	font-size: 2.5rem;
+}
+
+.front .info-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+}
+
+.front .info-container span {
+	font-weight: 300;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid white;
+}
+
+.front .info-container span:last-child {
+	border: none;
+}
+
+.back {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	justify-content: flex-start;
+	gap: 20px;
+	transform: rotateY(180deg);
+}
+
+.back h3 {
+	font-size: 1rem;
+	font-weight: 500;
+	margin-top: 4.5rem;
+}
+
+.back .price {
+	font-size: 3rem;
+	font-weight: 10;
+}
+
+.back a {
+	margin-top: 3rem;
+	text-decoration: none;
+	color: black;
+	font-weight: 300;
+	padding: 1rem 2rem;
+	background-color: white;
+	border-radius: 7px;
+}
+
+.card:hover .front {
+	transform: rotateY(180deg);
+	z-index: -15;
+}
+
+.card:hover .back {
+	transform: rotateY(0);
+}
+
+.card:nth-child(1) .front {
+	background: linear-gradient(135deg, rgb(46, 131, 241), purple);
+}
+.card:nth-child(1) .back {
+	background: linear-gradient(315deg, rgb(46, 131, 241), purple);
+}
+
+.card:nth-child(2) .front {
+	background: linear-gradient(135deg, rgb(212, 247, 117), purple);
+}
+.card:nth-child(2) .back {
+	background: linear-gradient(315deg, rgb(212, 247, 117), purple);
+}
+
+.card:nth-child(3) .front {
+	background: linear-gradient(135deg, rgb(120, 72, 233), rgb(23, 212, 108));
+}
+.card:nth-child(3) .back {
+	background: linear-gradient(315deg, rgb(120, 72, 233), rgb(23, 212, 108));
+}

@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	width: 700px;
+	height: 300px;
+	display: flex;
+	overflow: hidden;
+}
+
+.ani {
+	display: flex;
+	height: fit-content;
+	width: fit-content;
+	animation: marq 10s infinite linear;
+}
+
+.text {
+	display: inline;
+	background-color: rgb(85, 84, 84);
+	color: white;
+	font-size: 5rem;
+	font-weight: 600;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-style: italic;
+	text-wrap: nowrap;
+}
+
+@keyframes marq {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
+}
