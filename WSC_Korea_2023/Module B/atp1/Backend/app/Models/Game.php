@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use App\Models\GameVersion;
 
 class Game extends Model
@@ -12,8 +13,13 @@ class Game extends Model
 
     protected $gaurded = [];
 
-    public function version()
+    public function versions()
     {
-        return $this->hasOne(GameVersion::class, 'game_version_id');
+        return $this->hasMany(GameVersion::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

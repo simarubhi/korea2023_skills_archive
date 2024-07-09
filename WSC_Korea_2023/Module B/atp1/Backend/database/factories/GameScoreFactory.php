@@ -17,7 +17,9 @@ class GameScoreFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => 1,
+            'score' => 10,
+            'version_id' => 1,
         ];
     }
 }
