@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('game_versions', function (Blueprint $table) {
             $table->id();
             $table->string('file_path');
-            $table->timestamp('version');
+            $table->integer('version');
 
             $table->foreignId('game_id')->constrained()->cascadeOnDelete();
         });

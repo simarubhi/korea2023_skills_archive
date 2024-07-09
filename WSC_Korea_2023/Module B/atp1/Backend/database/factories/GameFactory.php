@@ -17,7 +17,7 @@ class GameFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->fake()->words(3, true),
+            'title' => fake()->words(3, true),
             'description' => fake()->paragraph(),
             'slug' => fake()->slug(),
             'user_id' => 1,
