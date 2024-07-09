@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GameVersion>
  */
-class AdminFactory extends Factory
+class GameVersionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,6 +17,9 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
+            'file_path' => 'test',
+            'version' => now(),
+            'game_id' => 1,
         ];
     }
 }
