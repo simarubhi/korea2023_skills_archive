@@ -18,7 +18,7 @@ class GameVersionFactory extends Factory
     {
         return [
             'file_path' => 'test',
-            'version' => 1,
+            'version' => now(),
             'game_id' => 1,
         ];
     }
