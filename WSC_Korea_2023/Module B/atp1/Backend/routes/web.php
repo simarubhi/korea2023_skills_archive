@@ -36,3 +36,6 @@ Route::middleware('admin')->get('/dashboard', function() {
 
 Route::post('/admin/login', [AdminController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::put('/users/unblock', [AdminController::class, 'unblock_user'])->name('unblock');
+Route::put('/users/block', [AdminController::class, 'block_user'])->name('block');

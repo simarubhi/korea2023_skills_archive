@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -37,5 +37,29 @@ class AdminController extends Controller
        $request->session()->regenerateToken();
 
        return redirect('/admin');
+    }
+
+    public function unblock_user(Request $request)
+    {
+        $user = User::find($request->user_id);
+        
+        $user->blocked = false;
+        $user->block_reason = null;
+
+        $user->save();
+
+        return back();
+    }
+
+    public function block_user(Request $request)
+    {
+        $user = User::find($request->user_id);
+        
+        $user->blocked = true;
+        $user->block_reason = $request->block_reason;
+
+        $user->save();
+
+        return back();
     }
 }
