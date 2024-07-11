@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('registered');
             $table->timestamp('last_login')->nullable();
+            $table->boolean('banned')->default(false);
         });
     }
 

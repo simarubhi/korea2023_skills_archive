@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -24,5 +26,16 @@ class AdminController extends Controller
         return back()->withErrors([
         'message' => 'The admin was not found'
         ])->onlyInput('username');
+    }
+
+    public function logout(Request $request)
+    {
+       Auth::guard('admin')->logout();
+       
+       $request->session()->invalidate();
+
+       $request->session()->regenerateToken();
+
+       return redirect('/admin');
     }
 }

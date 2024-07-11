@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    redirect('/admin');
+    return redirect('/admin');
 });
 
 
@@ -26,7 +28,11 @@ Route::middleware('guest:admin')->get('/admin', function() {
 })->name('login-form');
 
 Route::middleware('admin')->get('/dashboard', function() {
-    return view('dashboard');
+    return view('dashboard', [
+        'admins' => Admin::all(),
+        'users' => User::all(),
+    ]);
 })->name('dashboard');
 
 Route::post('/admin/login', [AdminController::class, 'login'])->name('login');
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('logout');

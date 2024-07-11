@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
+            $table->boolean('deleted')->default(false);
 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
