@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    redirect('/admin');
 });
+
+
+Route::middleware('guest:admin')->get('/admin', function() {
+    return view('login');
+})->name('login-form');
+
+Route::middleware('admin')->get('/dashboard', function() {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::post('/admin/login', [AdminController::class, 'login'])->name('login');
