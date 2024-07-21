@@ -53,7 +53,7 @@
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->registered }}</td>
                                 <td>{{ $user->last_login }}</td>
-                                <td><a href="#">See Profile</a></td>
+                                <td><a href="{{ route('user-profile', ['username' => $user->username]) }}">See Profile</a></td>
                                 @if ($user->blocked)
                                     <td>Blocked</td>
                                     <td>
@@ -84,6 +84,48 @@
                                         </form>
                                     </td>
                                 @endif
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="w-100">
+                <h2>All Games</h2>
+
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Versions</th>
+                            <th scope="col">Game Page</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($games as $game)
+                            <tr>
+                                <td>
+                                    <img @isset($game->thumbnail) src="{{ route('get-thumbnail', ['id' => $game->id]) }}" @endisset alt="Game Thumbnail">
+                                </td>
+                                <th scope="row">{{ $game->id }}</th>
+                                <td>{{ $game->title }}</td>
+                                <td>{{ $game->description }}</td>
+                                <td>{{ App\Models\User::where('id', $game->user_id)->first()->username }}</td>
+                                <td>
+                                    @foreach ($game->versions as $version)
+                                        @if (!$loop->last)
+                                            <span>{{ $version->version }}, </span>
+                                        @else
+                                            <span>{{ $version->version }}</span>
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td><a href="#">Game Page</a></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -61,5 +63,16 @@ class AdminController extends Controller
         $user->save();
 
         return back();
+    }
+
+    public function getThumbnail($id)
+    {
+        $game = Game::findOrFail($id);
+
+        if ($game->thumbnail) {
+            return Storage::download($game->thumbnail);
+        }
+
+        dd($game);
     }
 }
