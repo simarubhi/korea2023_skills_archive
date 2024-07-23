@@ -117,7 +117,11 @@
                 <tbody>
                     @foreach (App\Models\Game::all() as $game)
                         <tr class="game-row @if ($game->deleted) table-danger @endif">
-                            <th>Image</th>
+                            @if ($game->thumbnail)
+                                <td><img class="img-thumbnail" style="height: 100px;" src="{{ route('game-thumbnail', $game->id)}}" alt="Game Thumbnail"></td>
+                            @else
+                                <td class="fw-semibold">No Thumbnail</td>
+                            @endif
                             <th scope="row">{{ $game->id }}</th>
                             <td class="game-title">{{ $game->title }}</td>
                             <td>{{ $game->description }}</td>
@@ -155,6 +159,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 </body>
 </html>

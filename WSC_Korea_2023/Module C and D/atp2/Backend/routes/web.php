@@ -44,6 +44,11 @@ Route::middleware('auth:admin')->group(function() {
     Route::get('/game/{slug}', [GameController::class, 'page'])->name('game-page');
     Route::post('/game/{id}/delete', [GameController::class, 'delete'])->name('game-delete');
     Route::post('/game/{id}/restore', [GameController::class, 'restore'])->name('game-restore');
+
+    Route::get('/game/{id}/thumbnail', [GameController::class, 'get_thumbnail'])->name('game-thumbnail');
+
+    Route::delete('/game/{game_id}/score/{score_id}', [GameController::class, 'delete_score'])->name('score-delete');
+    Route::delete('user/{id}/scores', [GameController::class, 'delete_all_scores'])->name('user-delete-scores');
 });
 
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin-login');
