@@ -34,6 +34,6 @@ class AdminController extends Controller
  
         $request->session()->regenerateToken();
 
-        return route('/admin');
+        return redirect()->route('admin-login-view');
     }
 }

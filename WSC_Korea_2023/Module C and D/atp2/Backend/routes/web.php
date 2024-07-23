@@ -19,13 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest:admin')->group(function () {
     Route::get('/admin', function () {
         return view('login');
-})->name('admin-login-view');
+    })->name('admin-login-view');
     
     Route::get('/', function () {
         return redirect('/admin');
     });    
 
-    Route::post('/admin/login', [AdminController::class, 'login'])->name('admin-login');
 });
 
 Route::middleware('auth:admin')->group(function() {
@@ -33,5 +32,7 @@ Route::middleware('auth:admin')->group(function() {
         return view('dashboard');
     })->name('dashboard');
     
-    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin-login');
 });
+
+Route::post('/admin/login', [AdminController::class, 'login'])->name('admin-login');
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin-logout');
