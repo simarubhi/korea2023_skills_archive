@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -35,5 +36,49 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('admin-login-view');
+    }
+
+    public function user(Request $request, $username)
+    {
+        $user = User::where('username', $username)->first();
+
+        if ($user->blocked) {
+            return redirect(404);
+        }
+
+        return view('user', ['user' => $user]);
+    }
+
+
+    public function user_block(Request $request, $id)
+    {
+        $user = User::findorFail($id);
+
+        $user->blocked = true;
+
+        if ($request->reason == 'admin') {
+            $user->reason = 'You have been blocked by an administrator';
+        } else if ($request->reason == 'spam') {
+            $user->reason = 'You have been blocked for spamming';
+        } else if ($request->reason == 'cheat') {
+            $user->reason = 'You have been blocked for cheating';
+        } else {
+            $user->reason = 'You have been blocked by an administrator';
+        }
+
+        $user->save();
+
+        return redirect()->back();
+    }
+    
+    public function user_unblock(Request $request, $id)
+    {
+        $user = User::findorFail($id);
+        
+        $user->blocked = false;
+        $user->reason = null;
+        $user->save();
+
+        return redirect()->back();
     }
 }
