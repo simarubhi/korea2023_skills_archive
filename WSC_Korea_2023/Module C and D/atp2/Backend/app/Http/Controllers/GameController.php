@@ -8,6 +8,7 @@ use App\Models\Score;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class GameController extends Controller
 {
@@ -66,7 +67,34 @@ class GameController extends Controller
 
     }
 
-    public function delete_all_scores(Request $request, $user_id)
+    public function delete_all_scores_game(Request $request, $game_id)
+    {
+        $game = Game::find($game_id);
+
+        $versions = $game->versions;
+        
+        foreach ($versions as $version) {
+            $scores = $version->scores;
+            foreach ($scores as $score) {
+                $score->delete();
+            }
+        }
+        
+        return redirect()->back();
+    }
+
+    public function delete_all_game_scores_user(Request $request, $user_id, $game_id)
+    {
+        $user = User::find($user_id);
+
+        $user->scores()->whereHas('version', function (Builder $query) use ($game_id) {
+            $query->where('game_id', $game_id);
+        })->delete();
+
+        return redirect()->back();
+    }
+
+    public function delete_all_scores_user(Request $request, $user_id)
     {
         $user = User::find($user_id);
 

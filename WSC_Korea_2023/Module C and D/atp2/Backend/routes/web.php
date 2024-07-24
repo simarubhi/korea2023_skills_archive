@@ -48,7 +48,9 @@ Route::middleware('auth:admin')->group(function() {
     Route::get('/game/{id}/thumbnail', [GameController::class, 'get_thumbnail'])->name('game-thumbnail');
 
     Route::delete('/game/{game_id}/score/{score_id}', [GameController::class, 'delete_score'])->name('score-delete');
-    Route::delete('user/{id}/scores', [GameController::class, 'delete_all_scores'])->name('user-delete-scores');
+    Route::delete('/game/{game_id}/score', [GameController::class, 'delete_all_scores_game'])->name('game-score-delete');
+    Route::delete('user/{id}/scores', [GameController::class, 'delete_all_scores_user'])->name('user-delete-scores');
+    Route::delete('user/{id}/game/{game_id}/scores', [GameController::class, 'delete_all_game_scores_user'])->name('user-delete-game-scores');
 });
 
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin-login');

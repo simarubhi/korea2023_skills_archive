@@ -81,11 +81,24 @@
         
                         <tbody>
                             @foreach ($game->versions as $version)
+                                @empty ($version->scores[0])
+                                    <tr style="border-bottom: black;">
+                                        <td>
+                                            <span>No scores for version {{ $version->version_time }}</span>   
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endempty
                                 @foreach ($version->scores as $score)
                                     @php
-                                        $user = App\Models\User::find($score->user_id);
+                                        $user = $score->user;
                                     @endphp
-                                    <tr class="@if ($user->blocked) table-danger @endif">
+                                    <tr @if ($user->blocked) class="table-danger" @endif @if($loop->last && !$loop->parent->last) style="border-bottom: black;" @endif>
                                         <th scope="row">{{ $score->id }}</th>
                                         <td>{{ $score->score }}</td>
                                         @if ($user->blocked)
@@ -93,7 +106,7 @@
                                         @else
                                             <td>{{ $user->username }}</td>
                                         @endif
-                                        <td>{{ App\Models\Version::find($score->version_id)->version_time }}</td>
+                                        <td>{{ $score->version->version_time }}</td>
                                         <td>{{ $score->created_at }}</td>
                                         <td>{{ $score->updated_at }}</td>
                                         <form method="POST" action="{{ route('score-delete', [$game->id, $score->id])}}">
@@ -107,7 +120,15 @@
                                 @endforeach
                             @endforeach
                         </tbody>
+
                     </table>
+                    <form method="POST" action="{{ route('game-score-delete', $game->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <td>
+                            <button type="submit" class="btn btn-danger">Delete All Scores</button>
+                        </td>
+                    </form>
                 </div>
             </div>
 
