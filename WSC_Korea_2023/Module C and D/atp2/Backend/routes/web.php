@@ -18,7 +18,7 @@ use App\Http\Controllers\GameController;
 
 
 
-Route::middleware('guest:admin')->group(function () {
+Route::middleware('guest')->group(function () {
     Route::get('/admin', function () {
         return view('login');
     })->name('admin-login-view');
@@ -29,7 +29,7 @@ Route::middleware('guest:admin')->group(function () {
 
 });
 
-Route::middleware('auth:admin')->group(function() {
+Route::middleware('auth')->group(function() {
     Route::get('/dashboard', function() {
         return view('dashboard');
     })->name('dashboard');

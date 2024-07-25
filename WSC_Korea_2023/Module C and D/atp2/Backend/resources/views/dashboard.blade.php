@@ -118,7 +118,7 @@
                     @foreach (App\Models\Game::all() as $game)
                         <tr class="game-row @if ($game->deleted) table-danger @endif">
                             @if ($game->thumbnail)
-                                <td><img class="img-thumbnail" style="height: 100px;" src="{{ route('game-thumbnail', $game->id)}}" alt="Game Thumbnail"></td>
+                                <td><img class="img-thumbnail" style="height: 100px;" src="{{ route('game-thumbnail', $game->id) }}" alt="Game Thumbnail"></td>
                             @else
                                 <td class="fw-semibold">No Thumbnail</td>
                             @endif
