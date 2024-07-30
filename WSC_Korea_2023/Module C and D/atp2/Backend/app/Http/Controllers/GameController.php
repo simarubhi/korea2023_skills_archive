@@ -171,7 +171,7 @@ class GameController extends Controller
             // $game_query->with('versions')->orderBy(Version::select('version_time')->whereColumn('games.id', 'versions.game_id')->latest()->take(1), $sort_dir);
         }
 
-        dd($game_query->first());
+        dd($game_query->get());
 
 
         // $total_elements = count($games);
