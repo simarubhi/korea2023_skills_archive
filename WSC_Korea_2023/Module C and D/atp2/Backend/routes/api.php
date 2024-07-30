@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,13 +17,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->group(function() {
 
-    Route::prefix('auth')->group(function () {
+    Route::prefix('auth')->group(function() {
 
         Route::post('/signup', [UserController::class, 'signup']);
         Route::post('/signin', [UserController::class, 'signin']);
 
+        Route::middleware('auth:sanctum')->group(function() {
+            Route::post('/signout', [UserController::class, 'signout']);
+        });
+
+
+    });
+
+    Route::prefix('games')->group(function() {
+        Route::get('/', [GameController::class, 'get_games']);
     });
 
 });

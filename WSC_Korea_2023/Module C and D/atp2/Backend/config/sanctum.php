@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'guard' => ['web'],
+    'guard' => [], // We don't want to use guards do we keep this empty
 
     /*
     |--------------------------------------------------------------------------
