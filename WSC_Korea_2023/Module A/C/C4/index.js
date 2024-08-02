@@ -1,7 +1,7 @@
-//Here is your CODE!
-
 const highlight = new Highlight();
-var render = e => {
+
+//Here is your CODE!
+const render = e => {
 	const selction = document.getSelection();
 	const startNode = selction.anchorNode;
 	const startOff = selction.anchorOffset;
@@ -15,3 +15,24 @@ var render = e => {
 	highlight.add(highlightRange);
 	CSS.highlights.set('custom-highlight', highlight);
 };
+
+window.addEventListener('DOMContentLoaded', () => {
+	const btn = document.querySelector('.render-btn');
+	btn.setAttribute('onclick', 'render(event)');
+
+	const head = document.getElementsByTagName('head')[0];
+	const style = document.createElement('style');
+	head.appendChild(style);
+
+	// style.type = 'text/css';
+	style.appendChild(
+		document.createTextNode(
+			'::highlight(custom-highlight) {background: yellow;color: red;}'
+		)
+	);
+});
+
+/* ::highlight(custom-highlight) {
+				background: yellow;
+				color: red;
+			} */
