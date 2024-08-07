@@ -1,0 +1,24 @@
+.modal {
+	max-width: 375px;
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%);
+	background-color: lightblue;
+	padding: 2rem;
+	border-radius: 5px;
+	z-index: 100;
+	display: none;
+}
+
+.overlay {
+	display: none;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: black;
+	opacity: 0.5;
+}
