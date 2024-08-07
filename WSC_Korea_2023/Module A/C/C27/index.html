@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./main.css" />
+		<title>Customer Reviews</title>
+	</head>
+	<body>
+		<div class="container mx-auto">
+			<div class="flex items-start justify-between w-full pt-5">
+				<div class="flex flex-col w-2/3" id="reviews">
+					<!-- <div class="user-review-container mt-0">
+						<article>
+							<h3>
+								Username
+								<span class="certified-badge">
+									<img
+										src="certified.svg"
+										alt="certified"
+										class="w-4"
+									/>
+								</span>
+							</h3>
+							<div class="stars">
+								<img src="star.svg" alt="star" class="w-4" />
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+							</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur
+								adipisicing elit. Quaerat odit, mollitia
+								dignissimos est cupiditate ipsum aperiam
+								distinctio doloribus eius aliquid ex suscipit
+								repudiandae dolores maxime. Asperiores quas
+								saepe voluptates unde.
+							</p>
+						</article>
+					</div>
+					<div class="user-review-container">
+						<article>
+							<h3>Username</h3>
+							<div class="stars">
+								<img src="star.svg" alt="star" class="w-4" />
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+							</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur
+								adipisicing elit. Quaerat odit, mollitia
+								dignissimos est cupiditate ipsum aperiam
+								distinctio doloribus eius aliquid ex suscipit
+								repudiandae dolores maxime. Asperiores quas
+								saepe voluptates unde.
+							</p>
+						</article>
+					</div>
+					<div class="user-review-container">
+						<article>
+							<h3>
+								Username
+								<span class="certified-badge">
+									<img
+										src="certified.svg"
+										alt="certified"
+										class="w-4"
+									/>
+								</span>
+							</h3>
+							<div class="stars">
+								<img src="star.svg" alt="star" class="w-4" />
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+								<img
+									src="star.svg"
+									alt="star"
+									class="w-4 ml-1"
+								/>
+							</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur
+								adipisicing elit. Quaerat odit, mollitia
+								dignissimos est cupiditate ipsum aperiam
+								distinctio doloribus eius aliquid ex suscipit
+								repudiandae dolores maxime. Asperiores quas
+								saepe voluptates unde.
+							</p>
+						</article>
+					</div> -->
+				</div>
+				<div class="shadow w-1/5 ml-10 px-4 py-2">
+					<h2>Average rate</h2>
+					<p class="text-3xl font-bold text-green-500">
+						<span id="average">4.3</span
+						><small class="text-sm inline-block ml-1 text-gray-700"
+							>/5</small
+						>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const reviews = fetch('./data.json').then(async res => {
+					const data = await res.json();
+
+					const reviewContainer = document.getElementById('reviews');
+
+					const published = data.filter(entry => entry.published);
+					published.sort(
+						(a, b) => new Date(b.date) - new Date(a.date)
+					);
+
+					let score = 0;
+
+					published.forEach((publish, index) => {
+						const userContainer = document.createElement('div');
+						userContainer.classList.add('user-review-container');
+						if (index === 0) userContainer.classList.add('mt-0');
+
+						score += publish.rating;
+
+						const article = document.createElement('article');
+
+						const heading = document.createElement('h3');
+						heading.innerText = publish.author;
+
+						if (publish.certified) {
+							const span = document.createElement('span');
+							span.classList.add('certified-badge');
+
+							const badge = document.createElement('img');
+							badge.setAttribute('src', 'certified.svg');
+							badge.setAttribute('alt', 'certified');
+							badge.classList.add('w-4');
+							span.appendChild(badge);
+							heading.appendChild(span);
+						}
+
+						const stars = document.createElement('div');
+						stars.classList.add('stars');
+
+						for (let i = 0; i < publish.rating; i++) {
+							const star = document.createElement('img');
+							star.setAttribute('src', 'star.svg');
+							star.setAttribute('alt', 'star');
+							star.classList.add('w-4');
+							stars.appendChild(star);
+						}
+
+						const para = document.createElement('p');
+						para.innerText = publish.content;
+
+						article.appendChild(heading);
+						article.appendChild(stars);
+						article.appendChild(para);
+						userContainer.appendChild(article);
+						reviewContainer.appendChild(userContainer);
+					});
+
+					const average = document.getElementById('average');
+					average.innerText = score / published.length;
+				});
+			});
+		</script>
+	</body>
+</html>
