@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->text('password');
-            $table->timestamp('registered_at')->default(now());
-            $table->timestamp('last_login_at')->nullable();
-            $table->string('block_reason')->nullable();
+            $table->string('title');
+            $table->text('description');
+            $table->string('thumbnail_path')->nullable();
+            $table->string('slug')->unique();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('games');
     }
 };
