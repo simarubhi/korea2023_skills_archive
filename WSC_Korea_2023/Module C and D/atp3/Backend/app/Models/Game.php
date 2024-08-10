@@ -17,11 +17,15 @@ class Game extends Model
 
     public function versions()
     {
-        return $this->hasMany(GameVersion::class);
+        return $this->hasMany(GameVersion::class)->withTrashed()->orderBy('version_time', 'desc');
     }
 
     public function latest_version()
     {
-        return $this->versions()->where('deleated_at', null);
+        return $this->hasOne(GameVersion::class)->whereNull('deleted_at');
+    }
+
+    public function thumbnail()
+    {
     }
 }

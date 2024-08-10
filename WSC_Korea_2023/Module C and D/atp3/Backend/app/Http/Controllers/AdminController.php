@@ -25,9 +25,7 @@ class AdminController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors([
-            'message' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
+        return back()->withErrors(['login' => 'The provided credentials do not match our records.']);
     }
 
     public function logout(Request $request)

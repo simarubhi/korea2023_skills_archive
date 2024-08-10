@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=https://schema.skills17.ch/task-config/v3/config.schema.json
+id: c2-a-morning-backend
+metadata:
+  name: Backend
+groups: [ ]

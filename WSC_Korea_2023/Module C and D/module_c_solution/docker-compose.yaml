@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  db:
+    image: mariadb:10.5.15
+    environment:
+      MARIADB_ROOT_PASSWORD: worldskills2022
+      MARIADB_DATABASE: games
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.0-apache
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=worldskills2022
+
+  app:
+    build: .
+    ports:
+      - '8000:80'
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_DATABASE=games
+      - DB_PASSWORD=worldskills2022
+    volumes:
+      - './:/var/www/html/module_c_solution/'
+    depends_on:
+      - db

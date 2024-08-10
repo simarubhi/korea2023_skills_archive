@@ -61,7 +61,8 @@ class DatabaseSeeder extends Seeder
 
         GameVersion::factory()->create([
             'game_id' => 1,
-            'game_path' => '/demo-game-1-v1'
+            'game_path' => '/demo-game-1-v1',
+            'deleted_at' => now(),
         ]);
         GameVersion::factory()->create([
             'game_id' => 1,
