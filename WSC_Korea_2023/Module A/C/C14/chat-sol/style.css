@@ -1,0 +1,27 @@
+#image-container {
+	position: relative;
+}
+
+#imageCanvas {
+	display: block;
+	margin-top: 10px;
+}
+
+#magnifyingGlass {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #000;
+	background-color: rgba(255, 255, 255, 0.7);
+	display: none;
+	pointer-events: none;
+}
+
+#magnifyingGlass canvas {
+	width: 100px;
+	height: 100px;
+}
+
+#colorInfo {
+	margin-top: 20px;
+}
