@@ -1,7 +1,18 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 
-import { globalState } from '@/state'
+const router = useRouter()
+
+import { globalState, apiRequest } from '@/state'
+
+const signOut = async () => {
+  await apiRequest('http://localhost:8000/api/v1/auth/signout', 'POST')
+
+  globalState.isAuthenticated = false
+  globalState.user = null
+
+  router.push('/signout')
+}
 </script>
 
 <template>
@@ -14,9 +25,9 @@ import { globalState } from '@/state'
           <RouterLink to="/signin" class="btn btn-secondary">Signin</RouterLink>
         </div>
 
-        <div v-else class="d-flex gap-3">
-          <span>{{ globalState.user }}</span>
-          <RouterLink to="/signout" class="btn btn-danger">Signout</RouterLink>
+        <div v-else class="d-flex gap-3 justify-content-cetner align-items-center fs-5 fw-medium">
+          <span v-if="globalState.user" class="text-white">{{ globalState.user.username }}</span>
+          <button role="button" @click.prevent="signOut" class="btn btn-danger">Signout</button>
         </div>
       </div>
     </nav>

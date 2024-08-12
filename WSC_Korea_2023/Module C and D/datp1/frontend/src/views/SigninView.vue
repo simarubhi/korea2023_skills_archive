@@ -16,7 +16,7 @@ const errors = ref({
   general: ''
 })
 
-const signUpCall = async () => {
+const signInCall = async () => {
   errors.value = {
     username: '',
     password: '',
@@ -24,7 +24,7 @@ const signUpCall = async () => {
   }
 
   try {
-    const response = await fetch('http://localhost:8000/api/v1/auth/signup', {
+    const response = await fetch('http://localhost:8000/api/v1/auth/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -64,8 +64,8 @@ const signUpCall = async () => {
     class="container-lg d-flex flex-column justify-content-center align-items-center vw-100"
     style="height: 30vw"
   >
-    <h1 class="mb-3">Sign Up</h1>
-    <form class="card p-4 needs-validation" @submit.prevent="signUpCall" novalidate>
+    <h1 class="mb-3">Sign In</h1>
+    <form class="card p-4 needs-validation" @submit.prevent="signInCall" novalidate>
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input
