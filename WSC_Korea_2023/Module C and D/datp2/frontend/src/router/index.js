@@ -65,6 +65,9 @@ router.beforeEach(async (to, from, next) => {
     globalState.user = user
 
     localStorage.setItem('username', user.username)
+  } else {
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
   }
 
   if (to.meta.needAuth !== 'all') {
