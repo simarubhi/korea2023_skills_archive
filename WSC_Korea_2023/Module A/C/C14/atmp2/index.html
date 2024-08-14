@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Image Color Inspector</title>
+
+		<style>
+			.container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				gap: 30px;
+				margin: 2rem;
+			}
+
+			.magnify {
+				cursor: pointer;
+				padding: 0.75rem 1rem;
+				background-color: lightblue;
+				user-select: none;
+			}
+
+			.display-colour {
+				width: 100px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<select name="picture-select" id="picture-select"></select>
+
+			<canvas id="canvas"></canvas>
+
+			<span class="magnify">Magnify</span>
+
+			<span class="current-colour">Current colour</span>
+			<span class="display-colour"></span>
+			<script src="./main.js"></script>
+		</div>
+	</body>
+</html>
