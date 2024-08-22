@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Image Preview Lightbox</title>
+		<style>
+			/* Styles for the lightbox */
+			.lightbox {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.8);
+				justify-content: center;
+				align-items: center;
+				z-index: 1000;
+			}
+			.lightbox img {
+				max-width: 90%;
+				max-height: 80%;
+			}
+			.lightbox button {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: rgba(0, 0, 0, 0.5);
+				border: none;
+				color: white;
+				font-size: 24px;
+				cursor: pointer;
+				padding: 10px;
+				z-index: 1001;
+			}
+			.lightbox .prev {
+				left: 10px;
+			}
+			.lightbox .next {
+				right: 10px;
+			}
+			.lightbox .close {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				background-color: rgba(0, 0, 0, 0.5);
+				border: none;
+				color: white;
+				font-size: 24px;
+				cursor: pointer;
+				padding: 10px;
+				z-index: 1001;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Example images -->
+		<img src="../image1.jpg" alt="Image 1" class="lightbox-image" />
+		<img src="../image2.jpg" alt="Image 2" class="lightbox-image" />
+		<img src="../image3.jpg" alt="Image 3" class="lightbox-image" />
+
+		<!-- Lightbox structure -->
+		<div id="lightbox" class="lightbox">
+			<button class="close">&times;</button>
+			<button class="prev">&#10094;</button>
+			<button class="next">&#10095;</button>
+			<img src="" alt="Preview" />
+		</div>
+
+		<script>
+			(function () {
+				const lightbox = document.getElementById('lightbox');
+				const lightboxImage = lightbox.querySelector('img');
+				const prevButton = lightbox.querySelector('.prev');
+				const nextButton = lightbox.querySelector('.next');
+				const closeButton = lightbox.querySelector('.close');
+				let images = [];
+				let currentIndex = -1;
+
+				// Initialize the image array
+				function initializeImages() {
+					images = Array.from(
+						document.querySelectorAll('.lightbox-image')
+					);
+					images.forEach((img, index) => {
+						img.addEventListener('click', () =>
+							openLightbox(index)
+						);
+					});
+				}
+
+				// Open lightbox
+				function openLightbox(index) {
+					currentIndex = index;
+					lightboxImage.src = images[currentIndex].src;
+					lightbox.style.display = 'flex';
+				}
+
+				// Close lightbox
+				function closeLightbox() {
+					lightbox.style.display = 'none';
+				}
+
+				// Show previous image
+				function showPreviousImage() {
+					currentIndex =
+						currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+					lightboxImage.src = images[currentIndex].src;
+				}
+
+				// Show next image
+				function showNextImage() {
+					currentIndex =
+						currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+					lightboxImage.src = images[currentIndex].src;
+				}
+
+				// Event listeners
+				closeButton.addEventListener('click', closeLightbox);
+				prevButton.addEventListener('click', showPreviousImage);
+				nextButton.addEventListener('click', showNextImage);
+				lightbox.addEventListener('click', e => {
+					if (e.target === lightbox) closeLightbox();
+				});
+
+				// Initialize
+				initializeImages();
+			})();
+		</script>
+	</body>
+</html>
