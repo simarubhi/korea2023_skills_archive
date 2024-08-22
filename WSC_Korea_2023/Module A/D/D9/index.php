@@ -1,25 +1,29 @@
 <?php
 
+$final_string = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_REQUEST['area'])) {
         $number_final = [];
         $area_input = trim($_REQUEST['area']);
-        for ($i = 0; $i < strlen($area_input); $i++) {
-            if (is_numeric($area_input[$i])) {
-                array_push($number_final, intval($area_input[$i]) / 2);
+        $area_arr = explode(' ', $area_input);
+
+        $numeric_arr = [];
+
+        function isFloatAnInteger($float) {
+            return is_float($float) && ($float == (int)$float);
+        }
+
+        for ($i = 0; $i < count($area_arr); $i++) {
+            if (is_numeric($area_arr[$i]) && isFloatAnInteger(floatval($area_arr[$i]))) {
+                array_push($numeric_arr, intval($area_arr[$i]) / 2);
             }
         }
 
-        $final_ints =  [];
-        
-        for ($i = 0; $i < count($number_final); $i++) {
-            if (is_int($number_final[$i])) {
-                array_push($final_ints, $number_final[$i]);
+        for ($i = 0; $i < count($numeric_arr); $i++) {
+            if (is_int($numeric_arr[$i])) {
+                $final_string .= strval($numeric_arr[$i]) . ' ';
             }
-        }
-
-        foreach ($final_ints as $int) {
-            echo $int . ', ';
         }
     }
 }
@@ -35,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <form method="post">
-        <textarea name="area" id="area"></textarea>
+        <textarea name="area" id="area"><?php echo $final_string; ?></textarea>
         <button type="submit">Submit</button>
     </form>
 </body>
