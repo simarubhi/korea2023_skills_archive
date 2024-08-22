@@ -1,0 +1,43 @@
+.container {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	margin: 6rem 6rem;
+}
+
+.grid {
+	display: flex;
+	width: 320px;
+	height: 320px;
+	flex-wrap: wrap;
+}
+
+.pixel {
+	height: 18px;
+	width: 18px;
+	border: 1px solid rgba(145, 145, 145, 0.5);
+	cursor: pointer;
+}
+
+.colours {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 370px;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.colour {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	outline: 4px solid gray;
+	cursor: pointer;
+}
+
+.colour.active {
+	outline: 4px solid yellow;
+}
